@@ -1,0 +1,30 @@
+﻿<Window x:Class="RadSchedulViewTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadSchedulViewTest" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <telerik:RadDateTimePicker SelectedValue="{Binding SelectedAppointment.Start, ElementName=radScheduleView,Mode=TwoWay}"/>
+        <TextBox Text="{Binding SelectedAppointment.Subject, ElementName=radScheduleView,Mode=TwoWay}" Grid.Column="1"/>
+        <telerik:RadScheduleView x:Name="radScheduleView"  AppointmentsSource="{Binding AppointmentSource}" Grid.Row="1" Grid.ColumnSpan="3">
+            <telerik:RadScheduleView.ViewDefinitions>
+                <telerik:WeekViewDefinition/>
+            </telerik:RadScheduleView.ViewDefinitions>
+        </telerik:RadScheduleView>
+    </Grid>
+</Window>
